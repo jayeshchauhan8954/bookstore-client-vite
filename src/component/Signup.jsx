@@ -1,14 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Login from './Login'
 import { useForm } from "react-hook-form"
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
 function Signup() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/"
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm()
 
   const onSubmit = async (data) => {
@@ -22,9 +25,10 @@ function Signup() {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
-          toast.success('Signup successfully');
+          toast.success('Sign up successfully!👍');
+          navigate(from, { replace: true });
         }
-        localStorage.setItem("Users", JSON.stringify(res.data.user))
+        localStorage.setItem("user", JSON.stringify(res.data.user))
       }).catch((err) => {
         if (err.response) {
           console.log(err);
@@ -42,7 +46,7 @@ function Signup() {
               {/* if there is a button in form, it will close the modal */}
               <Link to="/" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>
 
-              <h3 className="font-bold text-lg">Signup</h3>
+              <h3 className="font-bold text-lg">Sign up</h3>
               {/* {email} */}
 
               <div className='mt-4'>
@@ -101,4 +105,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Signup;

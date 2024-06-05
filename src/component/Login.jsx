@@ -20,12 +20,18 @@ function Login() {
         console.log(res.data);
         if (res.data) {
           toast.success('Loggedin successfully');
+          document.getElementById("my_modal_3").close()
         }
-        localStorage.setItem("Users", JSON.stringify(res.data.user))
+        setTimeout(() => {
+          window.location.reload()
+          localStorage.setItem("user", JSON.stringify(res.data.user))
+        }, 1000);
+        // localStorage.setItem("user", JSON.stringify(res.data.user))
       }).catch((err) => {
         if (err.response) {
           console.log(err);
           toast.error("Error: " + err.response.data.message);
+          setTimeout(() => { }, 2000);
         }
       })
   }
@@ -35,7 +41,7 @@ function Login() {
         <div className="modal-box">
           <form onSubmit={handleSubmit(onSubmit)} method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <Link onClick={() => { window.location.reload() }} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>
+            <Link onClick={() => { window.location.href = '/' }} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>
             {/* </form> */}
             <h3 className="font-bold text-lg">Login</h3>
             {/* {email} */}
@@ -62,7 +68,7 @@ function Login() {
                 className='w-80 px-3 border rounded-md outline-none'
                 {...register("password", { required: true })}
               />
-              {errors.password && <span className='tfrontend/src/component/Signup.jsxext-sm text-red-500'>This field is required</span>}
+              {errors.password && <span className='frontend/src/component/Signup.jsxext-sm text-red-500'>This field is required</span>}
 
             </div>
             {/* {button} */}
