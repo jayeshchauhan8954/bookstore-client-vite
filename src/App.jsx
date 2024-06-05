@@ -11,7 +11,6 @@ function App() {
   const [authUser] = useAuth()
   return (
     <div className='dark:bg-slate-900 dark:text-white'>
-      {/* <BrowserRouter> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/course" element={authUser ? <Courses /> : <Navigate to="/signup" />} />
@@ -19,7 +18,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Toaster />
-      {/* </BrowserRouter> */}
     </div>
   )
 }
