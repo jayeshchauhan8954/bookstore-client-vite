@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { useEffect } from 'react'
+import { useAuth } from '../context/AuthPro'
 
 function Login() {
   const {
@@ -9,7 +11,12 @@ function Login() {
     handleSubmit,
     formState: { errors }
   } = useForm()
-
+  const [authUser] = useAuth()
+  useEffect(() => {
+    if (window.location.href === '/' && !authUser) {
+      document.getElementById("my_modal_3").showModal()
+    }
+  },[window.location.href])
   const onSubmit = async (data) => {
     const userInfo = {
       email: data.email,
