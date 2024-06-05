@@ -1,5 +1,3 @@
-import React from 'react'
-
 import bannner from '/book1.png'
 const Banner = () => {
   return (
