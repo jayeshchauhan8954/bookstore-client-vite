@@ -11,8 +11,7 @@ function Logout() {
             })
             localStorage.removeItem('user')
             toast.success("logout successfully")
-            document.getElementById("my_modal_3").close()
-            setTimeout(() => { window.location.reload() }, 3000);
+            setTimeout(() => { window.location.reload() }, 2000);
         } catch (error) {
             toast.error("error: " + error)
             setTimeout(() => { }, 2000);
