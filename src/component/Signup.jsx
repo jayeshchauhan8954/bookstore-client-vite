@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import Login from './Login'
 import { useForm } from "react-hook-form"
@@ -23,13 +22,13 @@ function Signup() {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
-          toast.success('signup successfully');
+          toast.success('Signup successfully');
         }
-        localStorage.setItem("Users",JSON.stringify(res.data.user))
+        localStorage.setItem("Users", JSON.stringify(res.data.user))
       }).catch((err) => {
         if (err.response) {
           console.log(err);
-          toast.error("Error: "  + err.response.data.message);
+          toast.error("Error: " + err.response.data.message);
         }
       })
   }

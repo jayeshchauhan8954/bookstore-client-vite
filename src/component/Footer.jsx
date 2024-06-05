@@ -1,9 +1,7 @@
-import React from 'react'
-
- const Footer = () => {
+const Footer = () => {
     return (
         <div className='mt-10'>
-            <hr/>
+            <hr />
 
             <footer className="footer footer-center p-10   text-base-content rounded">
                 <nav className="grid grid-flow-col gap-4">
